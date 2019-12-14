@@ -15,7 +15,7 @@ void bubblesort(int tab[], int x){
     for(int i=0;i<x;i++){
         printf("%d ",tab[i]);
     }
-        printf("}");
+        printf("}\n");
 }
 
 int main()
