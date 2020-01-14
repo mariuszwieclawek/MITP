@@ -1,69 +1,68 @@
-#include<iostream>
-#include<cstdlib>
-#include<cstring>
-#include<string>
-#include"sortint.h"
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
 
-using namespace std;
+#include "sortint.h"
+
+
 
 int main(int argc, char *argv[]){
     if(strcmp(argv[2],"bubble")==0 || strcmp(argv[2],"insert")==0){
 
-    int wybor;
+        int wybor;
 
-    if(strcmp(argv[2],"bubble")==0){
-	cout<<endl<<"Wybrales sortowanie babelkowe"<<endl<<endl;
-	wybor=1;
+        if(strcmp(argv[2],"bubble")==0){
+            printf("Wybrales sortowanie babelkowe\n\n");
+            wybor=1;
+        }
+        else{
+            printf("Wybrales sortowanie przez wstawianie\n\n");
+            wybor=2;
+        }
+
+        int n;
+        printf("Podaj ile liczb chcesz posortowac: \n");
+        scanf("%d", &n);
+
+        int tab[n];
+
+        printf("\nPodaj liczby do posortowania: ");
+
+        for(int i=0;i<n;i++){
+            scanf("%d", &tab[i]);
+        }
+
+        printf("\nPodane liczby przed sortowaniem: \n\n");
+
+        for(int i=0;i<n;i++){
+            printf("%d ", tab[i]);
+        }
+
+        switch(wybor){
+            case 1:
+                bubble(tab,n);
+                break;
+            case 2:
+                insert(tab,n);
+                break;
+        }
+
+        printf("\nPodane liczby po sortowaniu: \n\n");
+
+        for(int i=0;i<n;i++){
+            printf("%d ", tab[i]);
+        }
+        printf("\n\n");
+
+
+
+
     }
     else{
-	cout<<endl<<"Wybrales sortowanie przez wstawianie"<<endl<<endl;
-	wybor=2;
+        printf("\nPrawidlowe uzycie: ./zad16 -n Nazwa algorytmu sortujacego\n");
+        printf("Dostepne algorytmy: \n");
+        printf("bubble - Sortowanie babelkowe\n");
+        printf("insert - Sortowanie przez wstawianie\n");
     }
-
-    int *tab,n;
-    cout<<"Podaj ile liczb chcesz posortowac"<<endl;
-    cin>>n;
-
-    tab=new int[n];
-
-    cout<<endl<<"Podaj liczby do posortowania"<<endl;
-
-    for(int i=0;i<n;i++){
-	cin>>tab[i];
-    }
-
-    cout<<endl<<"Podane liczby przed sortowaniem:"<<endl;
-
-    for(int i=0;i<n;i++){
-	cout<<tab[i]<<" ";
-    }
-
-    switch(wybor){
-	case 1:
-		bubble(tab,n);
-		break;
-	case 2:
-		insert(tab,n);
-		break;
-    }
-
-    cout<<endl<<"Podane liczby po sortowaniu:"<<endl;
-
-    for(int i=0;i<n;i++){
-		cout<<tab[i]<<" ";
-    }
-    cout<<endl<<endl;
-
-    delete []tab;
-    tab=NULL;
-
-}
-else{
-     cout<<endl;
-     cout<<"Prawidlowe uzycie: zad16 -n Nazwa algorytmu sortujacego"<<endl;
-     cout<<endl<<"Dostepne algorytmy:"<<endl;
-     cout<<"bubble-Sortowanie babelkowe"<<endl;
-     cout<<"insert-Sortowanie przez wstawianie"<<endl;
-}
 return 0;
 }
